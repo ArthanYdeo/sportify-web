@@ -83,7 +83,25 @@ body {
 }
 
  /* Style the search container */
-  
+ #searchForm {
+  display: flex;
+  max-width: 400px;
+  margin: 0 auto;
+}
+#searchInput {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#searchButton {
+  padding: 8px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 
 .news-item {

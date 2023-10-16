@@ -28,7 +28,12 @@
         </div>
         
         <h1 style="color: white; margin-left: 300px; margin-top: 50px;">Welcome <span id="storedGlobalName">User!</span></h1><br>
- 
+        
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button type="submit" id="searchButton">Search</button>
+        </form>
+
         <div class="userwritepost">
             <i class="fa-solid fa-user" style= "font-size: 30px; margin-top: -25px;"></i>
         </div>
@@ -61,7 +66,12 @@ localStorage.setItem('globalState', globalfullName);
 const storedGlobalfullName = localStorage.getItem('globalState');
 const storedGlobalName = JSON.parse(storedGlobalfullName);
 console.log(storedGlobalName.user.isAuthenticated);
-
+document.getElementById("searchForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const searchTerm = document.getElementById("searchInput").value;
+            alert("Searching for: " + searchTerm);
+            // Perform actual search logic here
+        });
 function displayPosts() {
     const currentDate = new Date();
     const container = document.querySelector('.news-container');
