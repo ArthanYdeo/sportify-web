@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter&family=Kanit:wght@100&family=PT+Serif&family=Poppins&display=swap');
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url(background.jpg);
+  scroll-behavior: smooth;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.sidebar {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 110px;
+  height: 100%;
+  padding: 0 1.1rem;
+  color: white;
+  z-index: 2;
+  transition: all 0.5s linear;
+  background-color: #007980;
+  position: fixed;
+  overflow-y: auto;
+}
+.sidebar:hover{
+  width: 240px;
+  transition: 0.5s;
+  overflow: hidden;
+}
+.logo {
+  height: 80px;
+  padding: 16px;
+}
+
+.sidemenu {
+  height: 88%;
+  position: relative;
+  list-style: none;
+  padding: 0;
+}
+
+.sidemenu li {
+  padding: 1rem;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: all 0.5s ease-in-out;
+}
+.sidemenu li:hover,
+.active{
+  background-color: #06c1ca;
+}
+.sidemenu a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.sidemenu a span {
+  overflow: hidden;
+}
+.sidemenu i {
+  font-size: 40px;
+}
+ /* Style the search container */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.user-name-link {
+  text-decoration: none;
+  color: black;
+}
+.user-name-link:hover {
+  text-decoration: none;
+  color: black;
+}
+#logout-link {
+  margin-top: 10rem;
+  background-color:  #058990;
+}
+
+.chatPage{
+  margin-left: 2.5rem;
+  position: relative;
+  width:97%;
+  display: flex;
+}
+
+.chatPage .chat-message {
+  margin-left: 1rem;
+  position: relative;
+  flex: 80%;
+}
+.chat-message .container {
+  max-width: 100%;
+  height: 90px;
+  margin: 0 auto;
+  padding: 5px;
+  margin-top: 1rem;
+  margin-right: 10px;
+  margin-left: 90px;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
+.chat-message .chat-box {
+  max-width: 100%;
+  height: 740px;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-right: 10px;
+  margin-left: 90px;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+.type-message textarea {
+  height: 55px;
+  width: 97%;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  resize: none;
+  margin-top: 1.5rem;
+  margin-left: 90px;
+  margin-right: 10px;
+  border-radius: 0.5rem;
+  padding: 16px 15px 16px 0;
+  padding-left: 20px;
+}
+.type-message .send-btn {
+  position: absolute;
+  right: 2%;
+  line-height: 55px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: rgb(85, 0, 0); 
+  border: none;
+  background: none;
+  font-size: 2rem;
+  visibility: hidden;
+  margin-top: 1.7rem;
+}
+.type-message textarea:valid ~ button {
+  visibility: visible;
+
+}
+.send-btn:hover {
+transform: scale(1.5);
+}
+.send-btn {
+  transition: transform 0.2s ease;
+}
+
+.chat-body {
+  flex: 1;
+  color: white;
+  padding: 20px 30px;
+}
+
+.message {
+  background-color: black;
+  padding: 10px;
+  color: white;
+  width: fit-content;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.user_message {
+  margin-left: auto;
+  background-color: gray;
+  color: white;
+}
+
+.type-message form {
+  display: flex;
+}
+
+form textarea {
+  flex: 1;
+  height: 40px;
+  border: none;
+  outline: none;
+  padding-left: 5px;
+  font-size: 16px;
+}
+
+
+.form textarea {
+  background: transparent;
+  width: 30vw;
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  color:dark;
+}
+.form textarea::placeholder {
+  color:gray;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #999; 
+  margin-bottom: 5px; 
+  margin-left: 50%;
+}
+
+.userlist{
+  flex: 20%;
+}
+.acclist{
+  width: 100%;
+  height: 96vh;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius:1rem;
+}
+.acclist h1{
+  text-align: center;
+  padding-top: 1rem;
+}
+.acclist .search-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.acclist .header{
+  background-color: #e0e0e0;
+}
+/* Style the search input */
+.acclist .search-input {
+  padding: 10px 25px 10px 40px;
+  border: 1px solid #000000;
+  border-radius: 0.5rem;
+  width: 90%;
+  align-items: center;
+  margin-left: 20px;
+  margin-bottom: .5rem;
+  font-size: 16px;
+  background-image: url(magnifying-glass-solid.svg); /* Replace with your magnifying glass icon image */
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px; /* Adjust the size of the magnifying glass icon */
+}
+.chatlist{
+  position: relative;
+  height: calc(100% - 110px);
+  overflow: hidden;
+  color: #000000;
+}
+.chatlist .block{
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: #cdcdcd;
+  cursor: pointer;
+}
+
+.chatlist .block.active{
+  background: #ebebeb;
+}
+.chatlist .block:hover{
+  background-color: #f5f5f5;
+}
+
+.chatlist .block .iconbox{
+  position: relative;
+  min-width: 40px;
+  height: 45px;
+  overflow: hidden;
+  font-size: 2.5rem;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.chatlist .block .details{
+  position: relative;
+  width: 100%;
+}
+.chatlist .block .details .listhead{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.chatlist .block .details .listhead h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111;
+}
+.chatlist .block .details .listhead .time{
+  font-size: 0.75em;
+  color: #aaa;
+}
+
+.chatlist .block .details .listhead .time{
+  color: #000000;
+}
+.chatlist .block.unread .details .listhead .time{
+  color: #007980;
+}
+.message_p{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.message_p p{
+  color:gray;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  }
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url(background.jpg);
+  justify-content: center;
+  align-items: center; 
+  display: grid;
+  position: relative;
+  scroll-behavior: smooth;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.sidebar {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 110px;
+  height: 100%;
+  padding: 0 1.1rem;
+  color: white;
+  z-index: 2;
+  transition: all 0.5s linear;
+  background-color: #007980;
+  position: fixed;
+  overflow-y: auto;
+}
+.sidebar:hover{
+  width: 240px;
+  transition: 0.5s;
+  overflow: hidden;
+}
+.logo {
+  height: 80px;
+  padding: 16px;
+}
+
+.sidemenu {
+  height: 88%;
+  position: relative;
+  list-style: none;
+  padding: 0;
+}
+
+.sidemenu li {
+  padding: 1rem;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: all 0.5s ease-in-out;
+}
+.sidemenu li:hover,
+.active{
+  background-color: #06c1ca;
+}
+.sidemenu a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.sidemenu a span {
+  overflow: hidden;
+}
+.sidemenu i {
+  font-size: 40px;
+}
+ /* Style the search container */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Style the search input */
+.search-input {
+  padding: 10px 25px 10px 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 1250px;
+  margin-left: 70px;
+  font-size: 16px;
+  background-image: url(magnifying-glass-solid.svg); /* Replace with your magnifying glass icon image */
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px; /* Adjust the size of the magnifying glass icon */
+}
+
+/* Style the search button
+.search-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+*/
+
+.chat-message .container {
+  width: 1250px;
+  height: 90px;
+  padding: 5px;
+  margin-left: 70px;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+#userchat {
+  font-size: 60px;
+  margin-left: 10px;
+  
+}
+  /* grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;    
+}
+
+/* Style individual grid items (containers) */
+.grid-item {
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  background-color: #f0f0f0;
+  margin-top: 10px;
+  border-radius: 10px;
+  margin-left: 70px;
+  width: 100%;
+  height: 130px;
+}
+.grid-container h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-right: 40px;
+  margin-top: 20px;
+}
+.bxs-user-circle {
+  float: left;
+  font-size: 5rem;
+  margin-top: 0.5rem;
+}
+.bx-user-plus {
+  float: right;
+  font-size: 5rem;
+  margin-top: 0.5rem;
+}
+.user-name-link {
+  text-decoration: none;
+  color: black;
+}
+.user-name-link:hover {
+  text-decoration: underline;
+  color: black;
+}
+#logout-link {
+  margin-top: 10rem;
+  background-color:  #058990;
+}

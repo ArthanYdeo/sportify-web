@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style-home.css" />
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <title>Sportify</title>
+        <link rel="icon" type="image/x-icon" href="logo.png">
+        <script src="https://kit.fontawesome.com/071de36bb9.js" crossorigin="anonymous"></script>
+        </head>
+
+    <body>
+        
+        <div class="sidebar">
+            <div class="logo"></div>
+            <ul class="sidemenu">
+                <li><a href="userprofile.html"><i class="fa-solid fa-user"></i><span>Profile</span></a></li>
+                <li><a href="poll.html"><i class="fa-solid fa-square-poll-vertical"></i><span>Poll</span></a></li>
+                <li><a href="addfriends.html"><i class="fa-solid fa-user-plus"></i><span>Friends</span></a></li>
+                <li><a href="Chat.html"><i class="fa-solid fa-message"></i><span>Message</span></a></li>
+                <li><a href="home.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>    
+                <li><a href="aboutus.html"><i class="fa-solid fa-circle-info"></i><span>About us</span></a></li> 
+                <br>
+                <li id="logout-link"><a href="web.html"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Logout</span></a></li>
+            </ul>
+        </div>
+        
+        <h1 style="color: white; margin-left: 300px; margin-top: 50px;">Welcome <span id="storedGlobalName">User!</span></h1><br>
+ 
+        <div class="userwritepost">
+            <i class="fa-solid fa-user" style= "font-size: 30px; margin-top: -25px;"></i>
+        </div>
+        
+
+        <div class="input-containers">
+            <input type="text" id="post-text" class="text-input" placeholder="Enter your post...">
+            <button id="post-button" class="post-button"> <i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+
+
+        <div class="news-container">
+            <div class="news-items" id="post-container-0">
+                <!-- try dito -->
+            </div>
+        </div> <br>
+
+
+        <script>
+            
+    const posts = [];
+    const globalState = {
+    user: {
+      isAuthenticated: false,
+      username: null,
+    }
+}
+const globalfullName = JSON.stringify(globalState);
+localStorage.setItem('globalState', globalfullName);
+const storedGlobalfullName = localStorage.getItem('globalState');
+const storedGlobalName = JSON.parse(storedGlobalfullName);
+console.log(storedGlobalName.user.isAuthenticated);
+
+function displayPosts() {
+    const currentDate = new Date();
+    const container = document.querySelector('.news-container');
+    container.innerHTML = ''; // Clear the container
+
+    posts.forEach((post, index) => {
+        const postElement = document.createElement('div');
+        postElement.classList.add('news-item');
+
+
+        postElement.style.backgroundColor = '#ffffff';
+        postElement.style.border = '2px solid #dddddd';
+        postElement.style.borderRadius = '20px';
+        postElement.style.padding = '20px'
+
+    
+        
+        const formattedDate = currentDate.toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+          });
+
+     postElement.innerHTML = `
+     <a href="#" class="icon-link">
+        <i class='bx bxs-user-circle' style="font-size: 5rem;"></i>
+    </a> 
+
+    <a href="#" class="user-name-link">
+        <h2 style="margin-left: 80px; margin-top: -50px;"></h2>
+        <h1 style="margin-left:5rem; font-weight:bold; font-size:20px;">Shakirah De Vera</h1>
+        <small style="margin-left: 80px;">${formattedDate}</small> <br>
+    </a>
+    <br>    
+    <p style="margin-left: 8rem; font-size: 1.5rem; margin-top:1rem; font-weight:bold;">${post}</p>
+    <div class="voting">
+        <button class="likebtn" id="likebtn">
+            <i class='bx bxs-like'></i>
+        </button>
+        <span class="likeCount">0</span><h1 class="text">Like</h1>
+        <button class="commentbtn">
+            <i class='bx bx-message-dots'></i>
+        </button>
+        <span type="text" value=""></span><h1 class="text">Comment</h1>
+     <button class="deletebtn" onclick="deletePost(${index})">Delete</button>
+    </div>
+ `;
+
+        container.appendChild(postElement);
+        function toggleCommentInput() {
+            const commentInput = document.getElementById('commentInput');
+            commentInput.style.display = 'block';
+          }
+        
+
+        // Set up event listener for the "Like" button for each post
+        const likeButton = postElement.querySelector(".likebtn");
+        const likeCount = postElement.querySelector(".likeCount");
+
+
+        let currentLikeCount = 0;
+        let isLiked = false;
+
+        likeButton.addEventListener("click", () => {
+            likeButton.classList.toggle('clicked');
+            if (isLiked) {
+                currentLikeCount--;
+                likeButton.style.color = "#000"; // Change the color when unliked
+              } else {
+                currentLikeCount++;
+                likeButton.style.color = "#007980"; // Change the color when liked
+              }
+
+            isLiked = !isLiked;
+            likeCount.textContent = currentLikeCount;
+
+            if (currentLikeCount > 0) {
+                likeCount.style.display = "inline";
+            } else {
+                likeCount.style.display = "none";
+            }
+        });
+    });
+}
+
+            // Function to add a new post
+            function addPost() {
+                const postText = document.getElementById('post-text').value;
+                if (postText.trim() !== '') {
+                    posts.push(postText);
+                    displayPosts();
+                    document.getElementById('post-text').value = '';
+                }
+            }
+
+            // Function to delete a post
+            function deletePost(index) {
+                posts.splice(index, 1);
+                displayPosts();
+            }
+
+            // Event listeners
+            document.getElementById('post-button').addEventListener('click', addPost);
+            displayPosts();
+          </script>
+  
+    </body>
+</html>

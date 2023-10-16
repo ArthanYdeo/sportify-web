@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="regis.css" />
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <title>Sportify/Register</title>
+        <link rel="icon" type="image/x-icon" href="logo.png">
+        <script src="script.js"></script>
+        <script src="https://kit.fontawesome.com/071de36bb9.js" crossorigin="anonymous"></script>
+        
+    </head>
+
+    <body>
+        
+        <img src="logo1.1.png" class="logopic">
+
+        
+        <div class="welcome">
+            <form action="" onsubmit="return validatePhoneNumber()">
+                <div class="welcomepage">
+                    <h1 class="firsth1">Register</h1>
+
+                    <div class="input-box">
+                        <input type="text" placeholder="Full Name" value="" class="Full Name" id="Full Name" required>
+                    </div>
+
+                    <div class="dropdown">
+                        <div class="left">
+                            <span class="label" name="gender">Gender:</span>
+                            <select name="gender" id="gender">
+                                <option value="" disabled selected>Select Gender</option>
+                            </select>
+                        </div>
+                        <div class="right">
+                            <span class="label" name="age">Age:</span>
+                            <select name="age" id="age">
+                            <option value="" disabled selected>Select Age</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="number">
+                        <span for="phone" class="user_number" name="number">Phone Number:</span>
+                        <input type="tel" placeholder="e.g., +639123456789" pattern="^\+639\d{9}$" required>
+                    </div>
+                        
+                    <div class="input-container">
+                        <div class="input-email">
+                            <input type="email" placeholder="Email Address" value="" class="email-input" id="email" required>
+                        </div>
+                        <div class="input-password">
+                            <input type="password" placeholder="Password" value="" class="password-input" id="password" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" id="btnsignup" onclick="validatePhoneNumber()"> SIGN UP </button>
+                    </div>
+
+                    <p class="terms">By Continuing, you accept our Privacy <br> Policy, Terms of Use & Subscription Terms</p>
+                     </div>
+                </form>
+            </div>
+                <script> 
+
+                    var genderDropdown = document.getElementById('gender');
+                    const ageDropdown = document.getElementById('age');
+                    btnsignup.addEventListener('click', () => {
+                        window.location.href = 'web.html';
+                      });
+                    
+                    document.addEventListener('DOMContentLoaded', function () {
+                         const registerButton = document.querySelector('#btnsignup');
+                         registerButton.addEventListener('click', function () {
+                             alert('Registration complete!');
+                        });
+                    });
+
+                        // Define an array of gender options
+                        var genderOptions = [
+                            "Male",
+                            "Female",
+                            "Other"
+                        ];
+                
+                        // Populate the dropdown with gender options
+                        genderOptions.forEach(function (gender) {
+                            var option = document.createElement('option');
+                            option.value = gender;
+                            option.text = gender;
+                            genderDropdown.appendChild(option);
+                        });
+
+                        function populateAgeDropdown() {
+    
+    
+                            ageDropdown.innerHTML = '<option value="" disabled selected>Select Age</option>';
+                            
+                            // Add age options (you can adjust the range as needed)
+                            for (let age = 10; age <= 100; age++) {
+                                const option = document.createElement('option');
+                                option.value = age;
+                                option.textContent = age;
+                                ageDropdown.appendChild(option);
+                            }
+                        }
+                                populateAgeDropdown();
+
+                                function validatePhoneNumber() {
+                                    const phoneNumberInput = document.getElementById("phone");
+                                    const phoneNumber = phoneNumberInput.value;
+                                    const phoneNumberPattern = /^\+639\d{9}$/;
+                        
+                                    if (!phoneNumberPattern.test(phoneNumber)) {
+                                        alert("Please enter a valid Philippine phone number with the country code (+63).");
+                                        phoneNumberInput.focus();
+                                    }
+                                }
+                  </script> 
+
+            </form>
+        </div>
+
+
+
+
+
+
+    </body>
+</html>
+     

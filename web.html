@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <title>Sportify</title>
+        <link rel="icon" type="image/x-icon" href="logo.png">
+        <script src="https://kit.fontawesome.com/071de36bb9.js" crossorigin="anonymous"></script>
+        </head>
+    <body>
+        
+        <img src="logo1.1.png" class="logopic"> 
+
+        <div class="container">
+            <div class="login">
+                
+            </div>
+        </div>
+        
+        <div class="welcome">
+            <form action="">
+                <div class="welcomepage"> 
+                    <h1>Welcome to <br> Sportify!</h1>
+                    <div class="input-box">
+                        <input type="text" placeholder="Email Address" value="" class="emailAddress" name="email" id="emailAddress" required>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="password" placeholder="Password" value="" class="password" name="pasword" id="password" required>
+                    </div>
+
+                    <!-- <div class="remember-forgot"> 
+                        <label>
+                            <input type="checkbox"> Remember me
+                            <a href="#">Forgot Password</a>
+                        </label>
+                    </div> -->
+
+                    <div> 
+                    <button type="submit" id="btnlogin">LOGIN</button>   
+                    <button type="submit" id="btnsignup"> SIGN UP </button>
+                    </div>
+                    
+                    <p class="terms">By Continuing, you accept our Privacy <br> Policy, Terms of Use & Subscription Terms</p>
+                </div>
+
+                <script>
+                    function setLoading(isLoading) {
+                    console.log('Setting loading:', isLoading);
+                    }
+                    function setSuccess(isSuccess) {
+                    console.log('Setting success:', isSuccess);
+                    }
+                     const btnsignup = document.getElementById('btnsignup');
+                    const btnlogin = document.getElementById('btnlogin');
+                    const emailAddress = document.getElementById('emailAddress').value;
+                    const password = document.getElementById('password').value;
+
+                    btnlogin.addEventListener('click', async () => {
+                    try {
+                    const response = await fetch("http://localhost:3000/api/users/login", {
+                    method: "POST",
+                    headers: {
+                    "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                    emailAddress: emailAddress,
+                    password: password,
+                    }),
+                });
+                if (response.ok) {
+                        // Redirect to another HTML page when response status is 200 (OK)
+                        window.location.href = 'home.html';
+                    } else {
+                        const errorData = await response.json();
+                        setError(errorData.error);
+                        setLoading(false);
+                        setSuccess(false);
+                    }
+                } catch (error) {
+                    // Handle any network or other errors here
+                    console.error("Error:", error);
+                    setLoading(false);
+                    setSuccess(false);
+                }
+            });
+                    btnsignup.addEventListener('click', () => {
+                      window.location.href = 'register.html';
+                    });
+
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const loginButton = document.querySelector('#btnlogin');
+                        if (emailAddress || password != null) {
+                            loginButton.addEventListener('click', function () {
+                            alert('Login Successfully');
+                       });
+                        }
+                            
+                   });
+
+                   function validateUserAndPassword() {
+                    const emailInput = document.getElementById("emailAddress");
+                    const passwordInput = document.getElementById("password");
+                    
+                    // Replace with your validation logic
+                    const isInvalid = true; // Set this to true if validation fails
+                    
+                    if (isInvalid) {
+                        // If validation fails, add the "invalid-input" class to the input elements
+                        emailInput.classList.add("invalid-input");
+                        passwordInput.classList.add("invalid-input");
+                    } else {
+                        // If validation passes, remove the "invalid-input" class from the input elements
+                        emailInput.classList.remove("invalid-input");
+                        passwordInput.classList.remove("invalid-input");
+                    }
+                }
+                // Add an event listener to the "Login" button to trigger validation
+                document.getElementById("btnlogin").addEventListener("click", validateUserAndPassword);
+                  </script>
+            </form>
+        </div>
+    </body>
+</html>
+     
